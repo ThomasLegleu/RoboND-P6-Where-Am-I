@@ -1,8 +1,0 @@
-prefix=/home/robond/catkin_ws2/install
-
-Name: udacity_bot
-Description: Description of udacity_bot
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/robond/catkin_ws2/install/lib 
-Requires: 
