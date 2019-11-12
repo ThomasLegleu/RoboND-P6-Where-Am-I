@@ -1,0 +1,31 @@
+# Uses 2D navigation stack from ROS that takes in information from odometry, sensor streams, and a goal pose and outputs the parameters for the global costmap.
+# Main ROS packages to set parameters include : amcl | base_local_planner | carrot_planner | clear_costmap_recovery | costmap_2d | dwa_local_planner | 
+# fake_localization | global_planner  | map_server | move_base | move_base_msgs | move_slow_and_clear | nav_core | navfn | robot_pose_ekf | rotate_recovery | voxel_grid
+# http://wiki.ros.org/navigation?distro=melodic
+# to set up our global costmap we use parameters:
+#
+#    01- costmap2d 
+#    02 -map_server package
+global_costmap:
+  # The global frame for the costmap to operate in. http://wiki.ros.org/costmap_2d
+   global_frame: map
+  # The name of the frame for the base link of the robot. http://wiki.ros.org/costmap_2d
+   robot_base_frame: robot_footprint
+  # The frequency in Hz for the map to be updated
+  # The frequency in Hz for the map to be publish display information. 
+  # http://wiki.ros.org/costmap_2d
+   update_frequency: 1.0
+   publish_frequency: 1.0
+  # The width and height of the map in meters. http://wiki.ros.org/costmap_2d
+   width: 40.0
+   height: 40.0
+  # Resolution of the map, meters / pixel  
+  # http://wiki.ros.org/map_server
+   resolution: 0.02
+  # Retrieve the map via this service
+  # http://wiki.ros.org/map_server
+   static_map: true 
+  # Whether or not to use a rolling window version of the costmap. If the static_map parameter is set to true, 
+  # this parameter must be set to false. http://wiki.ros.org/costmap_2d
+   rolling_window: false
+

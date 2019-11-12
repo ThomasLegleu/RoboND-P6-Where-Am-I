@@ -1,0 +1,34 @@
+AMCL Localization Project udacity_bot//////////////
+
+terminal_01:
+cd ~/catkin_ws2
+source ~/catkin_ws2/devel/setup.bash
+roslaunch udacity_bot udacity_world.launch
+
+terminal_02:
+cd ~/catkin_ws2
+source ~/catkin_ws2/devel/setup.bash
+roslaunch udacity_bot amcl.launch
+
+terminal_03
+cd ~/catkin_ws2
+source ~/catkin_ws2/devel/setup.bash
+rosrun udacity_bot navigation_goal
+
+
+AMCL Localization Project_TL /////////////
+
+terminal_01:
+cd ~/catkin_ws3
+source ~/catkin_ws3/devel/setup.bash
+roslaunch udacity_bot udacity_world.launch
+
+terminal_02:
+cd ~/catkin_ws3
+source ~/catkin_ws3/devel/setup.bash
+roslaunch udacity_bot amcl.launch
+
+terminal_02:
+cd ~/catkin_ws3
+source ~/catkin_ws3/devel/setup.bash
+rosrun udacity_bot navigation_goal

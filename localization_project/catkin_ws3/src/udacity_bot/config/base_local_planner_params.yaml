@@ -1,0 +1,50 @@
+# Uses 2D navigation stack from ROS that takes in information from odometry, sensor streams, and a goal pose and outputs the parameters for the global costmap.
+# Main ROS packages to set parameters include : amcl | base_local_planner | carrot_planner | clear_costmap_recovery | costmap_2d | dwa_local_planner | 
+# fake_localization | global_planner  | map_server | move_base | move_base_msgs | move_slow_and_clear | nav_core | navfn | robot_pose_ekf | rotate_recovery | voxel_grid
+# http://wiki.ros.org/navigation?distro=melodic
+# to set up our global costmap we use parameters:
+#
+#    01- move_base
+#    02- base_local_planner
+#
+
+# The move_base package provides an implementation of an action (see the actionlib package) that, given a goal in the world, will attempt 
+# to reach it with a mobile base. The move_base node links together a global and local planner to accomplish its global navigation task.
+# http://wiki.ros.org/move_base
+controller_frequency: 2.0
+
+# Use the base_local_planner ROS pakage The base_local_planner::TrajectoryPlannerROS object is a wrapper for a base_local_planner::TrajectoryPlanner 
+# object that exposes its functionality as a C++ ROS Wrapper. It operates within a ROS namespace (assumed to be name from here on) specified on initialization. 
+# It adheres to the nav_core::BaseLocalPlanner interface found in the nav_core package.
+# http://wiki.ros.org/base_local_planner
+TrajectoryPlannerROS:
+  
+  holonomic_robot: false
+  # Whether the gdist_scale and pdist_scale parameters should assume that goal_distance and path_distance 
+  # are expressed in units of meters or cells. Cells are assumed by default
+  # http://wiki.ros.org/base_local_planner
+  meter_scoring: true
+  # The tolerance in radians for the controller in yaw/rotation when achieving its goal
+  # http://wiki.ros.org/base_local_planner
+  yaw_goal_tolerance:   0.1
+  # The tolerance in meters for the controller in the x & y distance when achieving a goal
+  # http://wiki.ros.org/base_local_planner
+  xy_goal_tolerance:    0.10
+  # The weighting for how much the controller should attempt to avoid obstacles
+  # http://wiki.ros.org/base_local_planner
+  occdist_scale:        0.1
+  
+  sim_time:             1.0
+  # The weighting for how much the controller should stay close to the path it was given, maximal possible value is 5.0
+  # http://wiki.ros.org/base_local_planner
+  pdist_scale: 3.0
+  gdist_scale: 1.0
+
+  max_vel_x: 0.07
+  min_vel_x: 0.05
+
+  max_vel_theta: 2.0
+
+  acc_lim_theta: 5.0
+  acc_lim_x: 5.0
+  acc_lim_y: 5.0
